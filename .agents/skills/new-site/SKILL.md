@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # new-site
 
-`design-taste-frontend` (tasteskill v2, experimental) is the **only** source of
+`design-taste-frontend` tasteskill is the **only** source of
 design rules for this run. Read it in full before Step 1, and use its vocabulary
 verbatim: dial names, layout families, section numbers. Every other protocol in
 `.agents/skills/` is out of scope for the duration. They contradict tasteskill by
