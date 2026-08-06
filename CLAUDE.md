@@ -54,7 +54,39 @@ Three.js is not installed — add it deliberately if a scene calls for it, and
 lazy-load it.
 
 **No icon library other than Phosphor is installed, and that is intentional:
-every skill here bans or discourages `lucide-react`.**
+every skill here bans or discourages `lucide-react`.** The skills allow
+`hugeicons-react`, `@radix-ui/react-icons` and `@tabler/icons-react` as
+alternatives, but the rule is one family per project, so swap rather than add.
+
+GSAP is the full package: `ScrollTrigger` and `Observer` are the two plugins the
+skills name, and `SplitText`, `ScrollSmoother`, `Flip`, `MorphSVG` and the rest
+are present too.
+
+## Fonts: check the source before you import
+
+Verified against the Google Fonts API. These are reachable through
+`next/font/google` with no install:
+
+`Geist`, `Geist Mono`, `Outfit`, `Instrument Serif`, `Playfair Display`,
+`JetBrains Mono`, `IBM Plex Mono`, `EB Garamond`, `Newsreader`, `Archivo Black`,
+`Space Mono`, `VT323`, `Courier Prime`, `Plus Jakarta Sans`.
+
+**These are named by the skills but are not on Google Fonts and have no npm
+package:** `Satoshi`, `Cabinet Grotesk`, `Switzer`, `Clash Display` (all free
+from [Fontshare](https://www.fontshare.com)), and `Monument Extended`,
+`PP Editorial New`, `Lyon Text`, `Neue Haas` (commercial).
+
+`high-end-visual-design` says to "assume premium fonts like Geist, Clash Display,
+PP Editorial New... are available". Two of those are not. Importing them from
+`next/font/google` fails the build.
+
+To use a Fontshare face, download the `.woff2` into `app/fonts/` and load it with
+`next/font/local`. Self-hosting is what the skills want anyway: `next/font` gives
+zero layout shift and no third-party request, and `design-taste-frontend`
+forbids `<link>`-tag font loading outright.
+
+When a brief does not demand a specific face, prefer the Google-reachable list
+above; it costs nothing and cannot break the build.
 
 ## Facts, not preferences
 
