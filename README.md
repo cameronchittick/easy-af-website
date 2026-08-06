@@ -21,6 +21,7 @@ travel with the repo. No install step, no plugin, no marketplace.
 
 | Skill | Reach for it when |
 |---|---|
+| **`/new-site`** | **Starting a page from scratch. Type it by hand. Runs the brief, gates on a design read you approve, then ships and audits.** |
 | `design-taste-frontend` | Default for landing pages, portfolios, redesigns. Start here. |
 | `high-end-visual-design` | Agency-tier polish: double-bezel cards, motion choreography |
 | `minimalist-ui` | Editorial, document-style, warm monochrome |
@@ -33,6 +34,10 @@ travel with the repo. No install step, no plugin, no marketplace.
 | `redesign-existing-projects` | Auditing and upgrading what already exists |
 | `full-output-enforcement` | Any task where truncated output would break things |
 | `design-taste-frontend-v1` | The previous revision, kept for reference |
+
+`/new-site` is the one you type; the rest fire on their own when the work matches.
+It is written into `.agents/skills/` alongside the others, so every agent gets it,
+and it survives `npx skills add` re-syncs (verified, not assumed).
 
 ### Pick one. Do not blend them.
 

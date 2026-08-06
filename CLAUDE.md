@@ -24,6 +24,7 @@ to prevent.
 
 | Skill | Reach for it when |
 |---|---|
+| `new-site` | User-invoked only (`/new-site`). Brief → gated design read → build → audit. |
 | `design-taste-frontend` | Default for landing pages, portfolios, redesigns. Start here. |
 | `high-end-visual-design` | Agency-tier polish: double-bezel cards, motion choreography |
 | `minimalist-ui` | Editorial, document-style, warm monochrome |
