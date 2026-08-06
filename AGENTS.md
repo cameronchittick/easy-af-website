@@ -16,8 +16,11 @@ they all exist to prevent.
 
 Start with `design-taste-frontend` unless the brief points elsewhere.
 
-Check `brand/` first. Anything in it is existing brand material and outranks
-whatever the protocol would have picked. Empty means greenfield.
+Read `brand/design.md` first. A filled one outranks whatever the protocol would
+have chosen. The files in `brand/` ship as unfilled templates whose sections
+describe what belongs in them, so check before trusting one: if a section still
+reads as an instruction, it is empty. Stop and ask rather than designing against
+a template.
 
 ## Three things that fail silently
 

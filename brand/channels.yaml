@@ -1,0 +1,19 @@
+# Channels
+#
+# One-line purpose: lists where this brand exists publicly, so skills link
+# and reference real accounts instead of inventing or omitting them.
+#
+# Skills MUST NOT run against an unfilled template. Fill or delete every
+# line below before any skill reads this tenant. Delete what does not
+# apply rather than leaving a placeholder.
+
+socials:
+  x: # https://x.com/<handle>
+  linkedin: # https://linkedin.com/company/<slug>
+  instagram: # https://instagram.com/<handle>
+  youtube: # https://youtube.com/@<handle>
+  github: # https://github.com/<org>
+  tiktok: # https://tiktok.com/@<handle>
+
+contact:
+  email: # hello@<domain>
