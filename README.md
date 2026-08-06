@@ -51,9 +51,12 @@ Update or re-sync: `npx skills add Leonxlnx/taste-skill`
 Push to GitHub, import at [vercel.com/new](https://vercel.com/new). Zero config.
 Set `NEXT_PUBLIC_SITE_URL` to your domain or the sitemap points at localhost.
 
-`CLAUDE.md` carries the constraints that actually bite: the Tailwind v4 syntax
-trap, which fonts resolve through `next/font/google` and which do not, and what
-is installed. Read it before you or an agent touches the styling.
+`AGENTS.md` holds the handful of things that fail silently rather than erroring.
+Every agent reads it; `CLAUDE.md` is a one-line import of it.
+
+On Windows, git checks out `.claude/skills/` as text files unless `core.symlinks`
+is on. `.agents/skills/` has the real files, so only Claude Code is affected;
+re-run `npx skills add Leonxlnx/taste-skill` to repair it.
 
 ## License
 
