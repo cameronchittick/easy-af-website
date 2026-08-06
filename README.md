@@ -1,16 +1,58 @@
 # easy-af-website
 
-A marketing site scaffold that is easy as fuck to ship. Next.js 16, Tailwind v4,
-deployed on Vercel, with the `design-taste-frontend` Claude Code skill baked in.
+A Next.js marketing site scaffold whose actual product is the **design skill
+collection baked into it**. Clone it, open any coding agent, ask for a landing
+page, and you get design instead of another purple-gradient AI template.
 
-It is deliberately empty. You get the wiring — metadata, SEO, fonts, tokens,
-lint, deploy — and no design, because the design is the part you should be
-generating from your own brief rather than deleting from someone else's template.
+The app ships deliberately empty — no palette, no components, no design — because
+the skills decide all of that from your brief.
 
 **[Use this template](https://github.com/cameronchittick/easy-af-website/generate)** →
-edit `lib/site.ts` → ask Claude for a landing page.
+edit `lib/site.ts` → ask your agent for a landing page.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcameronchittick%2Feasy-af-website&project-name=my-site&repository-name=my-site&env=NEXT_PUBLIC_SITE_URL&envDescription=Optional.%20Your%20public%20site%20URL%2C%20no%20trailing%20slash.)
+
+## Baked in for every agent, not just Claude
+
+The 13 skills live in **`.agents/skills/`** — the universal location read natively
+by Codex, GitHub Copilot, Kimi Code CLI, Amp, Antigravity and a dozen others.
+`.claude/skills/` symlinks to it for Claude Code. Both are committed, so they
+travel with the repo. No install step, no plugin, no marketplace.
+
+| Skill | Reach for it when |
+|---|---|
+| `design-taste-frontend` | Default for landing pages, portfolios, redesigns. Start here. |
+| `high-end-visual-design` | Agency-tier polish: double-bezel cards, motion choreography |
+| `minimalist-ui` | Editorial, document-style, warm monochrome |
+| `industrial-brutalist-ui` | Swiss print or tactical CRT; data-dense, rigid grids |
+| `gpt-taste` | GSAP-heavy scroll work, AIDA structure, bento grids |
+| `imagegen-frontend-web` / `-mobile` | Generate design references before coding |
+| `image-to-code` | Build from a generated or supplied design image |
+| `brandkit` | Brand boards, logo systems, identity decks |
+| `stitch-design-taste` | Producing a `DESIGN.md` for another agent |
+| `redesign-existing-projects` | Auditing and upgrading what already exists |
+| `full-output-enforcement` | Any task where truncated output would break things |
+| `design-taste-frontend-v1` | The previous revision, kept for reference |
+
+### Pick one. Do not blend them.
+
+These protocols **contradict each other on purpose**. `minimalist-ui` bans
+`rounded-full` on primary buttons; `high-end-visual-design` requires pill CTAs.
+`industrial-brutalist-ui` uses Inter Black; two others ban Inter outright. One
+forbids gradients, another wants radial mesh.
+
+That is the point. Averaging them produces exactly the inoffensive generic
+output every one of them exists to prevent. Choose a protocol per project, read
+it in full, and commit to it.
+
+Updating or re-syncing:
+
+```bash
+npx skills add Leonxlnx/taste-skill
+```
+
+Standard advice applies: review any `.agents/` or `.claude/` directory before you
+trust a repo. These skills run with full agent permissions.
 
 ## Quick start
 
@@ -21,49 +63,34 @@ npm install && npm run dev
 Then edit `lib/site.ts` — name, URL, description. Metadata, `sitemap.xml` and
 `robots.txt` all read from it, so your domain lives in exactly one place.
 
-## The design skill is baked in
-
-`.claude/skills/design-taste-frontend/` ships inside this repo, so anyone who
-clones it and opens Claude Code gets it automatically — no plugin, no install
-step. Ask for a landing page and it builds one from your brief.
-
-It is a large file (~87KB), deliberately. Skill bodies load only when the skill
-actually fires, so it costs nothing on a session where you never do design work.
-
-Two things worth knowing:
-
-- The skill wants Motion, Phosphor icons, Geist and Tailwind v4. All four are
-  already installed, so it ships code instead of stopping to ask you to install
-  things.
-- It reaches for `picsum.photos` and `cdn.simpleicons.org` for placeholder
-  images and logo walls. Both are pre-allowed in `next.config.ts`, because
-  `next/image` returns a 400 for any host that isn't. Delete them once you have
-  real assets.
-
-Standard advice applies in both directions: review any `.claude/` directory in a
-repo before you trust it. This one declares no `allowed-tools`, so it grants
-itself nothing.
-
 ## What's wired up
 
 | | |
 |---|---|
+| `.agents/skills/` | The 13 skills. The reason this template exists. |
 | `app/layout.tsx` | `metadataBase`, title template, Geist via `next/font`, Analytics |
-| `app/globals.css` | Tailwind v4 `@theme` tokens, dual light/dark via `prefers-color-scheme` |
+| `app/globals.css` | Empty of design on purpose — add `@theme` once a skill picks a direction |
 | `app/sitemap.ts`, `app/robots.ts` | Generated from `lib/site.ts`. Add routes as you build them. |
-| `app/icon.svg`, `app/opengraph-image.png` | Placeholder favicon and OG card — replace both |
+| `next.config.ts` | `picsum.photos` and `cdn.simpleicons.org` pre-allowed for `next/image` |
 | `biome.json` | Lint, format and import sorting in one dependency |
 | `.github/dependabot.yml` | Monthly grouped updates, self-enabling downstream |
 
+Pre-installed so the skills ship code instead of stopping to ask for installs —
+they all check `package.json` before importing: `gsap` + `@gsap/react` (required
+by `gpt-taste`), `motion`, `@phosphor-icons/react`.
+
+No other icon library is installed, deliberately: every skill here bans or
+discourages `lucide-react`. Three.js is not installed either — add it when a
+scene actually calls for it, and lazy-load it. Never mix GSAP and Motion in one
+component tree; they fight over frames.
+
 ### One Tailwind v4 trap
 
-Colours are `@theme` tokens used as **generated utilities** — `text-muted`,
-`border-line`, `bg-accent`. The v3 habit of writing `text-[--color-muted]` is
-dead: v4 reads brackets as a literal value and silently emits no CSS at all.
-Use `text-(--color-muted)` if you need the raw-variable form.
-
-Likewise, keep `@theme` at the top level. Nesting it inside a media query hoists
-it and clobbers the light palette, leaving you dark-only.
+Tailwind v4 reads `text-[--color-muted]` as a literal value and silently emits
+**no CSS at all** — the v3 habit is dead. Use the utility `@theme` generates
+(`text-muted`), or `text-(--color-muted)` for the raw-variable form. And keep
+`@theme` top-level: nesting it inside a media query hoists it and clobbers the
+base values.
 
 ## Deploying
 
@@ -71,11 +98,16 @@ Push to GitHub, import at [vercel.com/new](https://vercel.com/new). Everything
 is auto-detected; there is no `vercel.json` and you don't need one. Every branch
 gets its own preview URL, and merges to `main` go to production.
 
-Set `NEXT_PUBLIC_SITE_URL` to your real domain once you have one, or your
-sitemap and Open Graph tags will point at localhost.
+Set `NEXT_PUBLIC_SITE_URL` to your real domain once you have one, or your sitemap
+and Open Graph tags will point at localhost.
 
 One gotcha: **you cannot deploy a private repo owned by a GitHub organisation to
-a Hobby team.** Make it public, or use Pro. A repo in your personal account is fine.
+a Hobby team.** Make it public, or use Pro. A personal-account repo is fine.
+
+**Windows note:** `.claude/skills/` are symlinks. Git checks those out as plain
+text files unless `core.symlinks` is enabled. `.agents/skills/` holds the real
+files and works everywhere, so every other agent is unaffected; Claude Code users
+on Windows should enable symlinks or re-run `npx skills add Leonxlnx/taste-skill`.
 
 ### Analytics
 
@@ -101,20 +133,21 @@ then add `<SpeedInsights />` from `@vercel/speed-insights/next` next to
 | `npm run lint` | Biome — lint, format check, import order |
 | `npm run format` | Biome, writing fixes |
 
-## What this scaffold does not have, on purpose
+## Not included, on purpose
 
 No blog or MDX, no contact form, no `src/`, no route groups, no CI workflow, no
-Husky or lint-staged, no Prettier, no shadcn, no zod, no `vercel.json`, no theme
-toggle, no `tailwind.config.js`.
+Husky or lint-staged, no Prettier, no `vercel.json`.
 
-Each is a decision you make later, on your own schedule, in a repo you already
-understand. The reasoning for every one of them — with citations — is in
+Each is a decision you make later, in a repo you already understand. Platform
+reasoning — Vercel pricing, GitHub template mechanics, Next.js metadata — is in
 [`docs/research/nextjs-vercel-marketing-template.md`](docs/research/nextjs-vercel-marketing-template.md),
-including the worked approach for adding an MDX blog when you want one.
-
-Delete that file if you're using this to build an actual site; it's a design
-record, not documentation.
+including a worked approach for adding an MDX blog. Its design conclusions
+predate this skill collection; **where that document and a skill disagree, the
+skill wins.** Delete it if you're building an actual site — it's a design record,
+not documentation.
 
 ## License
 
-MIT.
+MIT for the scaffold. The skills in `.agents/skills/` come from
+[Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) and carry their
+own terms — check that repo before redistributing.

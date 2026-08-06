@@ -1,5 +1,32 @@
 # Easy-AF Marketing Site Template — Repository Structure Research
 
+> ## ⚠️ Design conclusions here are SUPERSEDED. Skills win.
+>
+> This was written when the template was planned around a **single** skill,
+> `design-taste-frontend`, copied in as one file. The repo now ships **13 skills**
+> from [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) in
+> `.agents/skills/`, installed via `npx skills add`.
+>
+> **Where this document and a skill disagree, the skill wins.** Specifically, the
+> following claims below are now wrong and must not be followed:
+>
+> - **"Ship Motion only. NEVER GSAP."** — `gpt-taste` hard-mandates GSAP
+>   (`@gsap/react`, `ScrollTrigger`). Both `gsap` and `motion` are installed. The
+>   surviving rule is narrower: never mix them *in the same component tree*.
+> - **"Split or ship the one 87KB skill."** — §3's whole framing. Skills are now
+>   managed by `npx skills add`; do not hand-edit or fork them.
+> - **"`.claude/skills/<name>/SKILL.md` as a real file."** — the real files live
+>   in `.agents/skills/` (universal across Codex, Copilot, Amp, Kimi and others);
+>   `.claude/skills/` symlinks to them.
+> - **"Ship no `.claude/` config."** — `.claude/skills/` and `launch.json` ship.
+> - **Any palette, font, dark-mode or component guidance** — the skills define
+>   these per protocol and contradict each other deliberately. `app/globals.css`
+>   is intentionally empty of tokens.
+>
+> What remains accurate and useful: the **platform** research — Next.js file
+> conventions and metadata, Vercel pricing and deploy mechanics, GitHub template
+> behaviour, Tailwind v4 mechanics, and tooling comparisons.
+
 > **Why this file lives here:** the repo at `/Users/cameronchittick/Code/cameronchittick/easy-af-website` was completely empty (not even a git repo) when this research was done. There was **no existing notes or docs convention to follow**, so `docs/research/` was chosen as a conventional, self-explanatory location. Move it if a different convention emerges.
 
 **Research date:** 2026-08-06

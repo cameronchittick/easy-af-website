@@ -4,8 +4,12 @@ import { Geist } from "next/font/google";
 import { openGraph, site } from "@/lib/site";
 import "./globals.css";
 
-// Self-hosted at build time: no request ever reaches Google from a visitor's
-// browser, and no layout shift.
+// A starting default, not a decision — Geist is one of the faces the skills
+// accept (never Inter, Roboto, Arial, Open Sans or Helvetica, which all of them
+// ban). Swap it for whatever your chosen skill calls for.
+//
+// Self-hosted at build time either way: no request reaches Google from a
+// visitor's browser, and no layout shift.
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {

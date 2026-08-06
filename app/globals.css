@@ -1,54 +1,20 @@
 @import "tailwindcss";
 
 /*
- * Tailwind v4 is CSS-first: tokens live here, there is no tailwind.config.js.
+ * Intentionally empty of design.
  *
- * These values are deliberately plain placeholders. The design skill picks real
- * ones from your brief — it does not want a palette pre-decided for it.
+ * The skills in .agents/skills/ each define their own palette, type stack and
+ * substrate, and they contradict each other on purpose — minimalist-ui is warm
+ * monochrome on white, industrial-brutalist-ui is unbleached paper or dead CRT,
+ * high-end-visual-design picks a vibe archetype per brief. Any token defined
+ * here would be a design decision taken away from whichever skill you invoke.
  *
- * `@theme` both defines the variables and generates the utilities: --color-line
- * gives you `border-line`, --color-accent gives you `bg-accent` and
- * `text-accent`, and so on. Use those. The v3 habit of writing the variable in
- * square brackets is dead in v4 — it reads brackets as a literal value and
- * silently emits no CSS at all. Use `border-(--color-line)` if you ever need
- * the raw-variable form.
+ * Add your `@theme` block once a skill has chosen the direction.
+ *
+ * Two Tailwind v4 mechanics worth knowing when you do:
+ *   - `@theme` generates utilities from tokens: --color-line gives `border-line`.
+ *     Writing `border-[--color-line]` silently emits nothing in v4 — brackets
+ *     are read as a literal value. Use `border-(--color-line)` for the raw form.
+ *   - Keep `@theme` at the top level. Nesting it inside `@media` hoists it and
+ *     clobbers the base values.
  */
-@theme {
-  --color-bg: oklch(99% 0 0);
-  --color-fg: oklch(20% 0 0);
-  --color-muted: oklch(55% 0 0);
-  --color-line: oklch(92% 0 0);
-  --color-accent: oklch(55% 0.19 264);
-
-  /* Document the z-index scale in one place so layers stay intentional. */
-  --z-base: 0;
-  --z-sticky: 10;
-  --z-header: 20;
-  --z-overlay: 30;
-  --z-modal: 40;
-}
-
-/*
- * Dark mode overrides the variable values only. `@theme` must stay top-level —
- * nesting it in a media query hoists it and clobbers the light palette, leaving
- * you dark-only. The utilities above resolve through var(), so overriding here
- * is enough, and no theme script or flash-of-wrong-theme is involved.
- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: oklch(16% 0 0);
-    --color-fg: oklch(97% 0 0);
-    --color-muted: oklch(65% 0 0);
-    --color-line: oklch(28% 0 0);
-    --color-accent: oklch(72% 0.16 264);
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--color-bg);
-  color: var(--color-fg);
-}

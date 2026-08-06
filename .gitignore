@@ -38,13 +38,9 @@ yarn-error.log*
 # claude code personal overrides — never yours to distribute
 .claude/settings.local.json
 
-# This template ships exactly one skill, as a real file. A local skills manager
-# may symlink .claude/skills/* into .agents/ — that machinery is personal setup,
-# and a symlink would checkout as a plain text file on Windows clones anyway.
-.agents/
-skills-lock.json
-.claude/skills/*
-!.claude/skills/design-taste-frontend/
+# .agents/skills/, skills-lock.json and the .claude/skills/ symlinks are the
+# core of this template — they ARE the product. They must be committed.
+# Re-sync or update them with: npx skills add Leonxlnx/taste-skill
 
 # vercel
 .vercel
