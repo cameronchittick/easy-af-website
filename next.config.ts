@@ -1,10 +1,6 @@
-import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Lets .mdx files be pages, so a blog post is just app/blog/<slug>/page.mdx
-  pageExtensions: ["ts", "tsx", "md", "mdx"],
-
   images: {
     // The design-taste-frontend skill reaches for these two hosts for
     // placeholder photography and logo walls. next/image returns 400 for any
@@ -22,8 +18,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-// Turbopack is the default bundler in Next 16 and cannot take imported plugin
-// functions, so remark/rehype plugins go here as strings, not imports.
-const withMDX = createMDX({});
-
-export default withMDX(nextConfig);
+export default nextConfig;

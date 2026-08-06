@@ -1,13 +1,16 @@
 # easy-af-website
 
-A marketing site template that is easy as fuck to ship. Next.js 16, Tailwind v4,
-deployed on Vercel. No auth, no database, no content layer, no ceremony —
-about 30 files, and one of them is the design system.
+A marketing site scaffold that is easy as fuck to ship. Next.js 16, Tailwind v4,
+deployed on Vercel, with the `design-taste-frontend` Claude Code skill baked in.
+
+It is deliberately empty. You get the wiring — metadata, SEO, fonts, tokens,
+lint, deploy — and no design, because the design is the part you should be
+generating from your own brief rather than deleting from someone else's template.
 
 **[Use this template](https://github.com/cameronchittick/easy-af-website/generate)** →
-edit `lib/site.ts` → deploy.
+edit `lib/site.ts` → ask Claude for a landing page.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcameronchittick%2Feasy-af-website&project-name=my-site&repository-name=my-site&env=NEXT_PUBLIC_SITE_URL,CONTACT_WEBHOOK_URL&envDescription=Both%20optional.%20Your%20public%20URL%2C%20and%20a%20webhook%20for%20the%20contact%20form.)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcameronchittick%2Feasy-af-website&project-name=my-site&repository-name=my-site&env=NEXT_PUBLIC_SITE_URL&envDescription=Optional.%20Your%20public%20site%20URL%2C%20no%20trailing%20slash.)
 
 ## Quick start
 
@@ -15,20 +18,14 @@ edit `lib/site.ts` → deploy.
 npm install && npm run dev
 ```
 
-Then, in order:
-
-1. **`lib/site.ts`** — name, URL, description, socials, nav. Everything else
-   reads from it, including `sitemap.xml` and `robots.txt`.
-2. **`app/page.tsx`** — the landing page.
-3. **`app/globals.css`** — colour tokens. They are plain placeholders on purpose.
-4. Replace `app/icon.svg`, `app/apple-icon.png` and `app/opengraph-image.png`.
+Then edit `lib/site.ts` — name, URL, description. Metadata, `sitemap.xml` and
+`robots.txt` all read from it, so your domain lives in exactly one place.
 
 ## The design skill is baked in
 
 `.claude/skills/design-taste-frontend/` ships inside this repo, so anyone who
 clones it and opens Claude Code gets it automatically — no plugin, no install
-step. Ask for a landing page and it builds one from your brief instead of
-another templated hero.
+step. Ask for a landing page and it builds one from your brief.
 
 It is a large file (~87KB), deliberately. Skill bodies load only when the skill
 actually fires, so it costs nothing on a session where you never do design work.
@@ -47,33 +44,26 @@ Standard advice applies in both directions: review any `.claude/` directory in a
 repo before you trust it. This one declares no `allowed-tools`, so it grants
 itself nothing.
 
-## Writing posts
+## What's wired up
 
-A post is one file:
+| | |
+|---|---|
+| `app/layout.tsx` | `metadataBase`, title template, Geist via `next/font`, Analytics |
+| `app/globals.css` | Tailwind v4 `@theme` tokens, dual light/dark via `prefers-color-scheme` |
+| `app/sitemap.ts`, `app/robots.ts` | Generated from `lib/site.ts`. Add routes as you build them. |
+| `app/icon.svg`, `app/opengraph-image.png` | Placeholder favicon and OG card — replace both |
+| `biome.json` | Lint, format and import sorting in one dependency |
+| `.github/dependabot.yml` | Monthly grouped updates, self-enabling downstream |
 
-```
-app/blog/your-slug/page.mdx
-```
+### One Tailwind v4 trap
 
-with a `metadata` export (`title`, `description`, `date`), plus one line added to
-`lib/posts.ts`. That export feeds both the blog index and the page's `<title>`
-and Open Graph tags. No frontmatter parser, no Contentlayer, no `fs`.
+Colours are `@theme` tokens used as **generated utilities** — `text-muted`,
+`border-line`, `bg-accent`. The v3 habit of writing `text-[--color-muted]` is
+dead: v4 reads brackets as a literal value and silently emits no CSS at all.
+Use `text-(--color-muted)` if you need the raw-variable form.
 
-Past ~20 posts, swap `lib/posts.ts` for `fs` + a glob. Not before.
-
-## The contact form
-
-A Server Action that validates server-side, drops bots with a honeypot, and
-POSTs JSON to `CONTACT_WEBHOOK_URL` — Slack, Discord, Zapier, Make, or a form
-service. No email SDK and no API key, so one-click deploy still works. If the
-variable is unset the form says so instead of failing silently.
-
-The body includes a `text` field (what Slack and Discord render) plus `name`,
-`email` and `message`.
-
-**If you get spam**, add rate limiting. It needs a store this template
-deliberately doesn't have — Upstash Redis via the Vercel Marketplace is the
-short path.
+Likewise, keep `@theme` at the top level. Nesting it inside a media query hoists
+it and clobbers the light palette, leaving you dark-only.
 
 ## Deploying
 
@@ -92,7 +82,7 @@ a Hobby team.** Make it public, or use Pro. A repo in your personal account is f
 `@vercel/analytics` is wired into the layout but does nothing until you turn Web
 Analytics on in the Vercel dashboard. Hobby includes 50,000 events/month.
 
-**Speed Insights is deliberately not included.** It's $10 per project per month
+**Speed Insights is deliberately not included** — it's $10 per project per month
 on Pro, billed as soon as you enable it. If you want it:
 
 ```bash
@@ -111,15 +101,17 @@ then add `<SpeedInsights />` from `@vercel/speed-insights/next` next to
 | `npm run lint` | Biome — lint, format check, import order |
 | `npm run format` | Biome, writing fixes |
 
-## What this template does not have, on purpose
+## What this scaffold does not have, on purpose
 
-No `src/`, no route groups, no CI workflow, no Husky or lint-staged, no
-Prettier, no shadcn, no zod, no `vercel.json`, no theme toggle, no
-`tailwind.config.js`. Each of those is a decision you can make later, on your own
-schedule, in a repo you already understand.
+No blog or MDX, no contact form, no `src/`, no route groups, no CI workflow, no
+Husky or lint-staged, no Prettier, no shadcn, no zod, no `vercel.json`, no theme
+toggle, no `tailwind.config.js`.
 
-The reasoning for every one of them — with citations — is in
-[`docs/research/nextjs-vercel-marketing-template.md`](docs/research/nextjs-vercel-marketing-template.md).
+Each is a decision you make later, on your own schedule, in a repo you already
+understand. The reasoning for every one of them — with citations — is in
+[`docs/research/nextjs-vercel-marketing-template.md`](docs/research/nextjs-vercel-marketing-template.md),
+including the worked approach for adding an MDX blog when you want one.
+
 Delete that file if you're using this to build an actual site; it's a design
 record, not documentation.
 

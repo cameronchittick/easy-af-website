@@ -1,8 +1,8 @@
 /**
  * The one file to edit on day one.
  *
- * Everything that identifies this site lives here: metadata, sitemap, robots,
- * header and footer all read from it. Change your domain in one place.
+ * Metadata, sitemap and robots all read from here, so your domain lives in one
+ * place. Add nav, socials and anything else your site needs as you build it.
  */
 
 export const site = {
@@ -11,17 +11,7 @@ export const site = {
   // production; the localhost fallback keeps `next build` from erroring on a
   // fresh clone (relative metadata URLs require metadataBase).
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  description:
-    "A marketing site template that is easy as fuck to ship. Next.js, Tailwind, Vercel.",
-  // Shown in the footer. Delete what you do not use.
-  socials: {
-    x: "https://x.com/",
-    github: "https://github.com/",
-  },
-  nav: [
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
-  ],
+  description: "A marketing site.",
 } as const;
 
 /**

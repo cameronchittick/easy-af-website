@@ -1,8 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
 import { openGraph, site } from "@/lib/site";
 import "./globals.css";
 
@@ -25,9 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={geist.variable}>
       <body className="min-h-[100dvh] font-sans antialiased">
-        <SiteHeader />
         {children}
-        <SiteFooter />
         {/* Inert until you turn Web Analytics on in the Vercel dashboard. */}
         <Analytics />
       </body>
