@@ -118,3 +118,7 @@ npx skills add Leonxlnx/taste-skill
 Writes `.agents/skills/` (read natively by Codex, Copilot, Amp, Kimi, Antigravity
 and others) and symlinks `.claude/skills/`. Both are committed; `skills-lock.json`
 pins the versions.
+
+On Windows, git checks out `.claude/skills/` as plain text files unless
+`core.symlinks` is enabled. `.agents/skills/` holds the real files so every other
+agent is unaffected; re-running the command above repairs the Claude Code side.
