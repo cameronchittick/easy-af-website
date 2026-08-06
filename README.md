@@ -153,6 +153,10 @@ not documentation.
 
 ## License
 
-MIT for the scaffold. The skills in `.agents/skills/` come from
-[Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) and carry their
-own terms — check that repo before redistributing.
+MIT for the scaffold.
+
+The skills in `.agents/skills/` (except `new-site`, which is original to this
+repo) come from [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill)
+by [@Leonxlnx](https://github.com/Leonxlnx), which is also MIT licensed. They are
+redistributed here under those terms. Re-sync them any time with
+`npx skills add Leonxlnx/taste-skill`.
