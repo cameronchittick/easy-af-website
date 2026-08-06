@@ -1,0 +1,13 @@
+# The one .github file worth shipping: it self-enables in whatever repo this
+# template becomes, and keeps a public marketing site off a year-old Next.js.
+# Monthly, grouped, so it's three PRs a year rather than noise.
+# Don't want it? Delete this file.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      all-dependencies:
+        patterns: ["*"]

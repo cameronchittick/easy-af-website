@@ -1,0 +1,34 @@
+export const metadata = {
+  title: "Hello world",
+  description: "The example post. Delete it, or edit it into your first real one.",
+  date: "2026-08-06",
+};
+
+# Hello world
+
+This is a post. It is a plain `.mdx` file at `app/blog/hello-world/page.mdx`, and
+it is already routed at `/blog/hello-world` — no content layer, no frontmatter
+parser, no build step of its own.
+
+## Adding another one
+
+Two steps:
+
+1. Copy this folder to `app/blog/your-slug/page.mdx` and edit the `metadata` export.
+2. Add one line to `lib/posts.ts`.
+
+That `metadata` export is doing double duty: it feeds the blog index _and_ the
+Next.js Metadata API, so the `<title>` and Open Graph tags for this page come
+from the same object you just edited.
+
+## What you get for free
+
+Markdown works as you'd expect — **bold**, _italic_, [links](/), lists, and
+fenced code:
+
+```ts
+export const posts = [{ slug: "hello-world", ...helloWorld }];
+```
+
+Styling for post bodies lives in `app/blog/layout.tsx`, so posts stay plain
+markdown and never carry classes.
