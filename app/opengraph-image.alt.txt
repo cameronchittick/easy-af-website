@@ -1,1 +1,1 @@
-Easy AF — a marketing site template built with Next.js, Tailwind and Vercel.
+Easy AF, a marketing site template built with Next.js, Tailwind and Vercel.

@@ -4,7 +4,7 @@
  * Intentionally empty of design.
  *
  * The skills in .agents/skills/ each define their own palette, type stack and
- * substrate, and they contradict each other on purpose — minimalist-ui is warm
+ * substrate, and they contradict each other on purpose: minimalist-ui is warm
  * monochrome on white, industrial-brutalist-ui is unbleached paper or dead CRT,
  * high-end-visual-design picks a vibe archetype per brief. Any token defined
  * here would be a design decision taken away from whichever skill you invoke.
@@ -13,7 +13,7 @@
  *
  * Two Tailwind v4 mechanics worth knowing when you do:
  *   - `@theme` generates utilities from tokens: --color-line gives `border-line`.
- *     Writing `border-[--color-line]` silently emits nothing in v4 — brackets
+ *     Writing `border-[--color-line]` silently emits nothing in v4 because brackets
  *     are read as a literal value. Use `border-(--color-line)` for the raw form.
  *   - Keep `@theme` at the top level. Nesting it inside `@media` hoists it and
  *     clobbers the base values.

@@ -35,11 +35,11 @@ yarn-error.log*
 # ...but the example must ship, or nobody who uses this template ever sees it.
 !.env.example
 
-# claude code personal overrides — never yours to distribute
+# claude code personal overrides, never yours to distribute
 .claude/settings.local.json
 
 # .agents/skills/, skills-lock.json and the .claude/skills/ symlinks are the
-# core of this template — they ARE the product. They must be committed.
+# core of this template. They ARE the product and must be committed.
 # Re-sync or update them with: npx skills add Leonxlnx/taste-skill
 
 # vercel

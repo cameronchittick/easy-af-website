@@ -4,7 +4,7 @@ import { Geist } from "next/font/google";
 import { openGraph, site } from "@/lib/site";
 import "./globals.css";
 
-// A starting default, not a decision — Geist is one of the faces the skills
+// Geist is a starting default, not a decision. It is one of the faces the skills
 // accept (never Inter, Roboto, Arial, Open Sans or Helvetica, which all of them
 // ban). Swap it for whatever your chosen skill calls for.
 //
@@ -13,7 +13,7 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  // Required — relative URLs in metadata throw a build error without it.
+  // Required: relative URLs in metadata throw a build error without it.
   metadataBase: new URL(site.url),
   title: {
     default: site.name,
