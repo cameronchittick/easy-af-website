@@ -16,6 +16,9 @@ they all exist to prevent.
 
 Start with `design-taste-frontend` unless the brief points elsewhere.
 
+Check `brand/` first. Anything in it is existing brand material and outranks
+whatever the protocol would have picked. Empty means greenfield.
+
 ## Three things that fail silently
 
 Everything else in this repo announces itself through a build error, a type
