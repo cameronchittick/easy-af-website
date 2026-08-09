@@ -14,7 +14,7 @@ decide all of that from your brief.
 npm install && npm run dev
 ```
 
-Type `/new-site` to fill in `brand/`, then `/build-site` to build from it.
+Type `/brand-setup` to fill in `brand/`, then `/build-site` to build from it.
 
 ## The skills
 
@@ -24,7 +24,7 @@ Committed, so they travel with the repo. No install step.
 
 | | |
 |---|---|
-| `/new-site` | **Start here.** Interviews the brand and fills `brand/`. |
+| `/brand-setup` | **Start here.** Interviews the brand and fills `brand/`. |
 | `/build-site` | Builds from a filled `brand/`, using the protocol recorded there, then audits. |
 | `design-taste-frontend` | The default protocol. Landing pages, portfolios, redesigns. |
 | `high-end-visual-design` | Agency-tier polish, motion choreography |
@@ -64,4 +64,4 @@ re-run `npx skills add Leonxlnx/taste-skill` to repair it.
 MIT. The skills come from
 [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) by
 [@Leonxlnx](https://github.com/Leonxlnx), also MIT, redistributed under those
-terms. `new-site` and `build-site` are original to this repo.
+terms. `brand-setup` and `build-site` are original to this repo.

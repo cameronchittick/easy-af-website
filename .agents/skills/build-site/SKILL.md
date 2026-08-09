@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # build-site
 
-f(`brand/`) to a built page. Reads the decisions `/new-site` recorded rather
+f(`brand/`) to a built page. Reads the decisions `/brand-setup` recorded rather
 than making them again.
 
 Write without em-dashes or en-dashes throughout, prose and page copy alike.
@@ -18,7 +18,7 @@ belongs in them, so check before trusting it: if a section still reads as an
 instruction, it is empty.
 
 **An unfilled `brand/` stops this skill.** Say which sections are empty and send
-the user to `/new-site`. Designing against a template means designing against
+the user to `/brand-setup`. Designing against a template means designing against
 instructions, which produces a site about the questionnaire instead of the
 brand.
 

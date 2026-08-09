@@ -1,11 +1,11 @@
 ---
-name: new-site
+name: brand-setup
 description: Interview the brand and fill brand/, so design work reads recorded decisions instead of guessing.
 argument-hint: "[url or path to seed from]"
 disable-model-invocation: true
 ---
 
-# new-site
+# brand-setup
 
 f(existing material, interview) to a filled `brand/`. Runs once per brand, and
 `/build-site` depends on its output.
@@ -14,22 +14,42 @@ No page code in this skill. It ends when `brand/` is signed off.
 
 Write without em-dashes or en-dashes throughout, including in the files you fill.
 
-## Step 1. Survey
+## Step 1. Survey what is already there
 
-Read all six files in `brand/`. They ship as templates whose sections describe
-what belongs in them, so classify each section before touching it: if it still
-reads as an instruction, it is empty.
+Read all six files in `brand/` and classify **every section** in each one. They
+ship as templates whose sections describe what belongs in them, so the test is:
+if a section still reads as an instruction rather than an answer, it is empty.
+A section carrying only an example, a placeholder or an angle-bracket token is
+also empty.
 
-Never overwrite a filled section. This skill is safe to re-run on a half
-finished brand, and re-running is the expected way to finish one.
+Report the result as a short per-file list of what is missing, then branch:
 
-*Done when:* you can name which sections are filled and which are not.
+- **Nothing filled.** Start at Step 2 and run the whole thing.
+- **Partly filled.** Name every gap you found, then resume at the first
+  unfilled file in the fill order from Step 4 and work forward from there. Do
+  not restart from the top, and do not stop at the first gap: carry on through
+  the order until every file is complete. Sections already filled are read as
+  context and left alone.
+- **Everything filled.** Do not re-interview. Summarize what each file says in
+  a line apiece and ask whether anything should change. If the answer is no,
+  say the brand is ready for `/build-site` and stop. If the answer names
+  something, edit only that and re-confirm it in Step 5.
+
+Never overwrite a filled section without being asked to. Re-running this skill
+is the expected way to finish a half done brand, so it must be safe at any
+point.
+
+*Done when:* every section is classified, the gaps are named out loud, and you
+know which branch you are on.
 
 ## Step 2. Seed before asking anything
 
 Brands already describe themselves. Draft from what exists first: the URL or
 path given as an argument, an existing live site, a sibling repo's copy, a deck
 the user points at, `lib/site.ts`, the README.
+
+Seed only the gaps Step 1 found. Sections already filled are source material for
+the ones that are not.
 
 Record where each file's content came from in a comment at the top:
 
@@ -64,6 +84,9 @@ open question.
 ## Step 4. Fill, in this order
 
 `positioning` then `icp` then `offer` then `voice` then `channels` then `design`.
+
+This is the fill order Step 1 resumes into. Enter it at the first unfilled file
+and continue through to the end, skipping what is already done.
 
 Design comes last because it synthesizes the rest: vibe words follow from
 positioning and audience, and the protocol follows from both. Infer
