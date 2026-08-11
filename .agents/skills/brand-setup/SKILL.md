@@ -16,20 +16,16 @@ Write without em-dashes or en-dashes throughout, including in the files you fill
 
 ## Step 1. Survey what is already there
 
-Read all six files in `brand/` and classify **every section** in each one. They
-ship as templates whose sections describe what belongs in them, so the test is:
-if a section still reads as an instruction rather than an answer, it is empty.
-A section carrying only an example, a placeholder or an angle-bracket token is
-also empty.
+Read all six files in `brand/` and classify **every section** in each one as
+stub or answered.
 
 Report the result as a short per-file list of what is missing, then branch:
 
 - **Nothing filled.** Start at Step 2 and run the whole thing.
-- **Partly filled.** Name every gap you found, then resume at the first
-  unfilled file in the fill order from Step 4 and work forward from there. Do
-  not restart from the top, and do not stop at the first gap: carry on through
-  the order until every file is complete. Sections already filled are read as
-  context and left alone.
+- **Partly filled.** Name every gap you found, then resume at the first stub
+  file in the fill order from Step 4 and carry on to the end of that order,
+  closing every gap on the way. Answered sections are read as context and left
+  alone.
 - **Everything filled.** Do not re-interview. Summarize what each file says in
   a line apiece and ask whether anything should change. If the answer is no,
   say the brand is ready for `/build-site` and stop. If the answer names

@@ -17,10 +17,13 @@ they all exist to prevent.
 Start with `design-taste-frontend` unless the brief points elsewhere.
 
 Read `brand/design.md` first. A filled one outranks whatever the protocol would
-have chosen. The files in `brand/` ship as unfilled templates whose sections
-describe what belongs in them, so check before trusting one: if a section still
-reads as an instruction, it is empty. Stop and ask rather than designing against
-a template.
+have chosen.
+
+`brand/` ships as **stubs**. A stub section describes what belongs in it instead
+of answering, so it reads as an instruction, an example, or an angle-bracket
+token. Classify every section as stub or answered before trusting a file. A stub
+is not a brief: design against one and the site comes out about the
+questionnaire. Stop and ask instead.
 
 ## Three things that fail silently
 

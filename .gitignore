@@ -48,3 +48,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# working notes and research. Local thinking, not part of the template someone
+# else installs. Anything here that turns out to be load-bearing belongs in a
+# skill or in AGENTS.md instead.
+docs/

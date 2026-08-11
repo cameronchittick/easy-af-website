@@ -13,20 +13,17 @@ Write without em-dashes or en-dashes throughout, prose and page copy alike.
 
 ## Step 1. Load the brand, or stop
 
-Read `brand/design.md`. It ships as a template whose sections describe what
-belongs in them, so check before trusting it: if a section still reads as an
-instruction, it is empty.
+Read `brand/design.md` and classify its sections as stub or answered.
 
-**An unfilled `brand/` stops this skill.** Say which sections are empty and send
-the user to `/brand-setup`. Designing against a template means designing against
-instructions, which produces a site about the questionnaire instead of the
-brand.
+**A stub `brand/` stops this skill.** Name the stub sections and send the user to
+`/brand-setup`.
 
 Then read `positioning.md`, `icp.md`, `offer.md` and `voice.md`. Positioning and
 ICP decide what the sections argue, offer decides what the CTAs say, and voice
 decides how every line reads.
 
-*Done when:* `brand/design.md` is confirmed filled and the other four are read.
+*Done when:* every section of `brand/design.md` is answered rather than stub, and
+the other four files are read.
 
 ## Step 2. Load the protocol named in design.md
 
@@ -49,7 +46,8 @@ constraints, and the protocol wins on everything else.
 - **At least 8 sections**, each chosen because it fits this product
 - **At least 4 different layout families** across them, per tasteskill §4, the
   Section-Layout-Repetition Ban
-- **Real images:** generation tool first, then Picsum-seed. `picsum.photos` and
+- **Real images:** `venice-image-generate`, writing binary to `public/`.
+  Picsum-seed is the fallback when it is unavailable; `picsum.photos` and
   `cdn.simpleicons.org` are the allowed hosts in `next.config.ts`.
 - **One theme**, locked for the whole page
 - **CTAs from `offer.md`**, never invented
